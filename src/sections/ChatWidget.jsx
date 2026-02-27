@@ -5,8 +5,9 @@ import { useState, useRef, useEffect } from 'react'
 import styles from './ChatWidget.module.css'
 
 // ⚠️ غيّر هذا الـ URL لرابط الـ Webhook بتاعك من n8n
-const N8N_WEBHOOK_URL = 'http://localhost:5678/webhook/clinic-chat'
-const WHATSAPP_NUMBER = '966500000000'
+// const N8N_WEBHOOK_URL = 'http://localhost:5678/webhook/clinic-chat'
+const N8N_WEBHOOK_URL = 'https://n8n.tifacom.cfd/webhook-test/clinic-chat'
+const WHATSAPP_NUMBER = '01032558781'
 
 const QUICK_REPLIES = [
   { label: '📅 حجز موعد', message: 'أريد حجز موعد' },
