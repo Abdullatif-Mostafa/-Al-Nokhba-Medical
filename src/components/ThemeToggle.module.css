@@ -1,0 +1,47 @@
+.toggle {
+  background: none; border: none; cursor: pointer; padding: 4px;
+  display: flex; align-items: center;
+}
+
+.track {
+  width: 58px; height: 30px; border-radius: 50px;
+  background: linear-gradient(135deg, #87CEEB, #FDB813);
+  position: relative; display: flex; align-items: center;
+  padding: 0 5px; justify-content: space-between;
+  border: 2px solid rgba(255,255,255,0.3);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: background 0.4s ease !important;
+}
+.trackDark {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-color: rgba(59,158,232,0.4);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.thumb {
+  position: absolute; right: 3px;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  z-index: 2;
+}
+.thumbDark {
+  right: auto; left: 3px;
+  background: #1e3a5f;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.icon {
+  font-size: 12px;
+  color: #F5A623;
+  transition: all 0.3s !important;
+}
+.thumbDark .icon { color: #A8BCCF; }
+
+.labelLight, .labelDark {
+  font-size: 11px; z-index: 1; line-height: 1;
+}
+.labelLight { color: #FDB813; }
+.labelDark { color: #A8BCCF; }
