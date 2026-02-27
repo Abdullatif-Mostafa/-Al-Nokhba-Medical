@@ -9,6 +9,7 @@ import Booking from './sections/Booking'
 import Contact from './sections/Contact'
 import Footer from './components/Footer'
 import WhatsAppFloat from './components/WhatsAppFloat'
+import ChatWidget from './sections/ChatWidget'
 
 function App() {
   useEffect(() => {
@@ -31,6 +32,7 @@ function App() {
         <Testimonials />
         <Booking />
         <Contact />
+        <ChatWidget/>
       </main>
       <Footer />
       <WhatsAppFloat />
