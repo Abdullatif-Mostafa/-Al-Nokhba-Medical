@@ -1,9 +1,16 @@
 .nav {
-  position: fixed; top: 0; width: 100%; z-index: 1000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index:999;
   background: var(--nav-bg);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
 }
 .scrolled { box-shadow: var(--shadow-md); }
 

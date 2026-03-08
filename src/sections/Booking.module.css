@@ -29,6 +29,7 @@
 .group { margin-bottom: 1.2rem; }
 .label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--text-dark); }
 .input {
+  color: aliceblue;
   width: 100%; padding: 13px 16px;
   border: 1.5px solid var(--border); border-radius: 12px;
   font-size: 15px; font-family: 'Tajawal', sans-serif;

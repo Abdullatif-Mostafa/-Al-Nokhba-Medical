@@ -21,6 +21,14 @@
   gap: 10px;
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   overflow: hidden;
+  -webkit-transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  -moz-transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  -ms-transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  -o-transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
 }
 .trigger:hover {
   width: 160px;
