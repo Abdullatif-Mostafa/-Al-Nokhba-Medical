@@ -83,7 +83,7 @@ export default function ChatWidget() {
       if (!res.ok) throw new Error('فشل الاتصال')
 
       const data = await res.json()
-
+      console.log('Response from n8n:', data)
       addMessage('bot', data.reply || 'عذراً، حدث خطأ. يرجى المحاولة مرة أخرى.', {
         showBookingBtn: data.show_booking_btn,
         showWhatsappBtn: data.whatsapp_redirect,
@@ -178,7 +178,6 @@ export default function ChatWidget() {
                     <i className="fab fa-whatsapp" /> تحدث مع موظف
                   </a>
                 )}
-
                 <div className={styles.time}>{msg.time}</div>
               </div>
             </div>
