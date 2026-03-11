@@ -11,7 +11,7 @@
   color: var(--primary); font-size: 18px;
 }
 .feature strong { display: block; font-size: 15px; margin-bottom: 2px; color: var(--text-dark); }
-.feature span { font-size: 13px; color: var(--text-light); }
+.feature span   { font-size: 13px; color: var(--text-light); }
 
 .formWrap {
   background: var(--surface-2); border-radius: var(--radius-lg);
@@ -26,10 +26,9 @@
   display: flex; align-items: center; justify-content: center; color: white;
 }
 
-.group { margin-bottom: 1.2rem; }
-.label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--text-dark); }
-.input {
-  color: aliceblue;
+.group  { margin-bottom: 1.2rem; }
+.label  { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; color: var(--text-dark); }
+.input  {
   width: 100%; padding: 13px 16px;
   border: 1.5px solid var(--border); border-radius: 12px;
   font-size: 15px; font-family: 'Tajawal', sans-serif;
@@ -41,16 +40,80 @@
 
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
-.submitBtn {
-  width: 100%; background: linear-gradient(135deg, #25D366, #128C7E);
-  color: white; border: none; border-radius: 14px; padding: 16px;
-  font-size: 17px; font-weight: 800; font-family: 'Tajawal', sans-serif;
-  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
-  box-shadow: 0 6px 20px rgba(37,211,102,0.4); margin-top: 0.5rem;
+/* ===== زرّان ===== */
+.btnsRow {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  margin-top: 0.5rem;
 }
-.submitBtn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(37,211,102,0.5); }
+
+/* زر الحجز المباشر */
+.submitBtnDirect {
+  background: linear-gradient(135deg, var(--primary, #3B9EBE), #0D6B8C);
+  color: white; border: none; border-radius: 14px; padding: 15px 20px;
+  font-size: 16px; font-weight: 800; font-family: 'Tajawal', sans-serif;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;
+  box-shadow: 0 6px 20px rgba(59,158,190,0.35);
+  transition: transform .2s, box-shadow .2s;
+}
+.submitBtnDirect:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(59,158,190,0.45);
+}
+.submitBtnDirect:disabled { opacity: .65; cursor: not-allowed; }
+
+/* زر واتساب */
+.submitBtn {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white; border: none; border-radius: 14px; padding: 15px 18px;
+  font-size: 15px; font-weight: 800; font-family: 'Tajawal', sans-serif;
+  cursor: pointer; display: flex; align-items: center; gap: 8px;
+  box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+  transition: transform .2s, box-shadow .2s; white-space: nowrap;
+}
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(37,211,102,0.45);
+}
+
+/* ===== رسائل ===== */
+.errorMsg {
+  background: rgba(239,68,68,.08); border: 1px solid rgba(239,68,68,.25);
+  color: #ef4444; padding: 12px 16px; border-radius: 10px;
+  font-size: 14px; margin-bottom: 14px;
+}
+
+.hint {
+  font-size: 12px; color: var(--text-light); margin-top: 10px;
+  text-align: center; opacity: .7;
+}
+
+/* ===== رسالة النجاح ===== */
+.successMsg {
+  text-align: center; padding: 40px 20px;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.successIcon { font-size: 52px; }
+.successMsg h3 { font-size: 20px; font-weight: 800; color: var(--text-dark); }
+.successMsg p  { font-size: 14px; color: var(--text-light); }
+
+.resetBtn {
+  background: var(--primary, #3B9EBE); color: #fff; border: none;
+  border-radius: 10px; padding: 10px 24px; font-family: 'Tajawal', sans-serif;
+  font-size: 14px; font-weight: 700; cursor: pointer; margin-top: 8px;
+}
+
+/* ===== Spinner ===== */
+.spinner {
+  display: inline-block; width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,.35); border-top-color: #fff;
+  border-radius: 50%; animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
 
 @media (max-width: 768px) {
-  .inner { grid-template-columns: 1fr; }
-  .row { grid-template-columns: 1fr; }
+  .inner   { grid-template-columns: 1fr; }
+  .row     { grid-template-columns: 1fr; }
+  .btnsRow { grid-template-columns: 1fr; }
 }
