@@ -20,7 +20,7 @@ export default function Services() {
               <div className={styles.priceRow}>
                 <div>
                   <div className={styles.priceLabel}>الكشف من</div>
-                  <div className={styles.price}>{s.price} ريال</div>
+                  <div className={styles.price}>{s.price} جنيه مصري</div>
                 </div>
                 <a href="#booking" className={styles.link}>
                   احجز <i className="fas fa-arrow-left" />

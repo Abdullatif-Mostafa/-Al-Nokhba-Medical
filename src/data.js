@@ -49,18 +49,16 @@ export const SERVICES = [
     price: '120',
   },
 ]
-
 export const STATS = [
   { icon: 'fas fa-users', value: 15000, label: 'مريض تم علاجهم بنجاح', suffix: '' },
   { icon: 'fas fa-award', value: 20, label: 'سنة خبرة طبية', suffix: '' },
   { icon: 'fas fa-user-md', value: 45, label: 'طبيب متخصص', suffix: '' },
   { icon: 'fas fa-star', value: 98, label: 'معدل رضا المرضى', suffix: '%' },
 ]
-
 export const DOCTORS = [
   {
     id: 1,
-    name: 'د. أحمد الراشد',
+    name: 'د. أحمد علي',
     specialty: 'استشاري أمراض القلب والأوعية',
     university: 'جامعة هارفارد',
     experience: '18 سنة',
@@ -72,7 +70,7 @@ export const DOCTORS = [
   },
   {
     id: 2,
-    name: 'د. سارة المنصور',
+    name: 'د. سارة المحمدي',
     specialty: 'استشارية طب الأطفال والحديثي الولادة',
     university: 'جامعة أكسفورد',
     experience: '14 سنة',
@@ -84,7 +82,7 @@ export const DOCTORS = [
   },
   {
     id: 3,
-    name: 'د. خالد العتيبي',
+    name: 'د. خالد  حسن',
     specialty: 'استشاري جراحة العظام والمفاصل',
     university: 'جامعة جونز هوبكنز',
     experience: '22 سنة',
@@ -95,7 +93,6 @@ export const DOCTORS = [
     bgGradient: 'linear-gradient(160deg, #e8f5e9, #c8e6c9)',
   },
 ]
-
 export const TESTIMONIALS = [
   {
     id: 1,
@@ -108,7 +105,7 @@ export const TESTIMONIALS = [
   {
     id: 2,
     text: 'الدكتورة سارة رائعة مع أطفالي. ولدي كان خائفاً من الأطباء لكنها تعاملت معه بطريقة رائعة. شكراً جزيلاً على هذه الخدمة المميزة.',
-    name: 'نورة الشمري',
+    name: 'نورة الزهراني',
     role: 'أم لطفلين • منذ شهر',
     rating: 5,
     avatarGradient: 'linear-gradient(135deg, #e91e63, #c2185b)',
@@ -116,7 +113,7 @@ export const TESTIMONIALS = [
   {
     id: 3,
     text: 'أجريت عملية الركبة مع الدكتور خالد وكانت ناجحة 100%. الآن أمشي بشكل طبيعي بعد سنوات من الألم. الله يعطيهم العافية.',
-    name: 'عبدالرحمن الحربي',
+    name: 'عبدالرحمن محمد',
     role: 'مريض عظام • منذ 6 أشهر',
     rating: 5,
     avatarGradient: 'linear-gradient(135deg, #2e7d32, #43a047)',
@@ -124,7 +121,7 @@ export const TESTIMONIALS = [
   {
     id: 4,
     text: 'الحجز سهل والاستقبال ممتاز والانتظار قصير. المكان نظيف ومرتب. الطبيب شرح لي كل شيء بالتفصيل وأنا مرتاح جداً.',
-    name: 'فاطمة القحطاني',
+    name: 'فاطمة اسماعيل',
     role: 'مريضة مراجعة • منذ أسبوع',
     rating: 5,
     avatarGradient: 'linear-gradient(135deg, #ff6f00, #f57c00)',
@@ -132,13 +129,12 @@ export const TESTIMONIALS = [
   {
     id: 5,
     text: 'خدمة 5 نجوم بكل معنى الكلمة. فريق طبي محترف ومتعاون. لأول مرة أشعر بالراحة والثقة التامة في المكان الذي يعالجني.',
-    name: 'سلطان الدوسري',
+    name: 'سلطان السيد',
     role: 'مريض • منذ 2 أشهر',
     rating: 5,
     avatarGradient: 'linear-gradient(135deg, #1565c0, #1976d2)',
   },
 ]
-
 export const NAV_LINKS = [
   { href: '#home', label: 'الرئيسية' },
   { href: '#services', label: 'خدماتنا' },

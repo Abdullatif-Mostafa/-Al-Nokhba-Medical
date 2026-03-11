@@ -103,6 +103,10 @@
   align-items: center;
   justify-content: space-between;
   border-radius: 24px 24px 0 0;
+  -webkit-border-radius: 24px 24px 0 0;
+  -moz-border-radius: 24px 24px 0 0;
+  -ms-border-radius: 24px 24px 0 0;
+  -o-border-radius: 24px 24px 0 0;
 }
 .headerInfo {
   display: flex;
@@ -120,6 +124,10 @@
   font-size: 20px;
   color: white;
   position: relative;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
 }
 .onlineDot {
   position: absolute;
