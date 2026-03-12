@@ -1,18 +1,43 @@
 import { useState, useEffect, useRef } from "react";
 
+// ===================== SUPABASE =====================
+const SUPABASE_URL     = "https://uzozzcrpyqhxzuszwwlv.supabase.co";
+const SUPABASE_ANON    = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV6b3p6Y3JweXFoeHp1c3p3d2x2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIxOTYwNjMsImV4cCI6MjA4Nzc3MjA2M30.pr1cNwJ4HxAbIU9sdsnTLHLqLP0mzNoh4JsZrlZtaOo";
+
+const sbHeaders = {
+  "Content-Type": "application/json",
+  "apikey": SUPABASE_ANON,
+  "Authorization": `Bearer ${SUPABASE_ANON}`,
+};
+
+async function sbFetch(path, opts = {}) {
+  const res = await fetch(`${SUPABASE_URL}/rest/v1${path}`, { headers: sbHeaders, ...opts });
+  if (!res.ok) throw new Error(await res.text());
+  return res.json();
+}
+
+async function fetchBookings() {
+  return sbFetch("/bookings?select=*&order=created_at.desc");
+}
+
+async function updateBookingStatus(id, status) {
+  await fetch(`${SUPABASE_URL}/rest/v1/bookings?id=eq.${id}`, {
+    method: "PATCH",
+    headers: { ...sbHeaders, "Prefer": "return=minimal" },
+    body: JSON.stringify({ status }),
+  });
+}
+
+async function insertBooking(data) {
+  return sbFetch("/bookings", {
+    method: "POST",
+    headers: { ...sbHeaders, "Prefer": "return=representation" },
+    body: JSON.stringify(data),
+  });
+}
+
 // ===================== DATA =====================
-const INITIAL_BOOKINGS = [
-  { id: 1,  name: "أحمد محمد علي",     age: 34, specialty: "القلب",    doctor: "د. أحمد الراشد",   date: "2026-03-12", time: "10:00", phone: "0501234567", email: "ahmed@gmail.com",  status: "pending",   notes: "" },
-  { id: 2,  name: "سارة عبدالله",      age: 28, specialty: "الأطفال",  doctor: "د. سارة المنصور",  date: "2026-03-12", time: "11:30", phone: "0509876543", email: "sara@gmail.com",   status: "confirmed", notes: "" },
-  { id: 3,  name: "محمد الغامدي",      age: 45, specialty: "العظام",   doctor: "د. خالد العتيبي",  date: "2026-03-12", time: "14:00", phone: "0551234567", email: "mhmd@gmail.com",   status: "pending",   notes: "" },
-  { id: 4,  name: "فاطمة الزهراني",    age: 32, specialty: "الأسنان",  doctor: "د. عمر السبيعي",   date: "2026-03-13", time: "09:00", phone: "0561234567", email: "fatma@gmail.com",  status: "confirmed", notes: "" },
-  { id: 5,  name: "خالد العتيبي",      age: 55, specialty: "العيون",   doctor: "د. فيصل الحربي",   date: "2026-03-13", time: "15:30", phone: "0571234567", email: "khalid@gmail.com", status: "cancelled", notes: "الغى بسبب سفر" },
-  { id: 6,  name: "نورة السبيعي",      age: 24, specialty: "الجلدية",  doctor: "د. منى الشهري",    date: "2026-03-14", time: "10:00", phone: "0581234567", email: "nora@gmail.com",   status: "confirmed", notes: "" },
-  { id: 7,  name: "عبدالرحمن الحربي",  age: 61, specialty: "القلب",    doctor: "د. أحمد الراشد",   date: "2026-03-14", time: "11:00", phone: "0591234567", email: "abdo@gmail.com",   status: "pending",   notes: "" },
-  { id: 8,  name: "منيرة القحطاني",    age: 38, specialty: "الأطفال",  doctor: "د. سارة المنصور",  date: "2026-03-15", time: "08:30", phone: "0521234567", email: "mona@gmail.com",   status: "confirmed", notes: "" },
-  { id: 9,  name: "تركي الدوسري",      age: 42, specialty: "العظام",   doctor: "د. خالد العتيبي",  date: "2026-03-15", time: "13:00", phone: "0531234567", email: "turki@gmail.com",  status: "pending",   notes: "" },
-  { id: 10, name: "ريم الشمري",        age: 29, specialty: "الجلدية",  doctor: "د. منى الشهري",    date: "2026-03-16", time: "16:00", phone: "0541234567", email: "reem@gmail.com",   status: "confirmed", notes: "" },
-];
+const INITIAL_BOOKINGS = [];
 
 const DOCTORS = [
   { id: 1, name: "د. أحمد الراشد",   specialty: "القلب والأوعية",   exp: 18, patients: 1240, rating: 4.9, days: "الأحد، الثلاثاء، الخميس",   fee: 200, available: true,  img: "أ" },
@@ -336,18 +361,37 @@ function BookingsPage({ bookings, setBookings }) {
     setTimeout(() => setToast(null), 3000);
   };
 
-  const updateStatus = (id, status) => {
-    setBookings(prev => prev.map(b => b.id === id ? { ...b, status } : b));
-    showToast(status === "confirmed" ? "✓ تم تأكيد الحجز" : status === "cancelled" ? "✕ تم إلغاء الحجز" : "★ تم إكمال الحجز");
+  const updateStatus = async (id, status) => {
+    try {
+      await updateBookingStatus(id, status);
+      setBookings(prev => prev.map(b => b.id === id ? { ...b, status } : b));
+      showToast(status === "confirmed" ? "✓ تم تأكيد الحجز" : status === "cancelled" ? "✕ تم إلغاء الحجز" : "★ تم إكمال الحجز");
+    } catch (e) {
+      showToast("حدث خطأ، حاول مرة أخرى", "error");
+    }
   };
 
-  const addBooking = () => {
+  const addBooking = async () => {
     if (!form.name || !form.date || !form.phone) return showToast("يرجى ملء الحقول المطلوبة", "error");
-    const newB = { ...form, id: Date.now(), status: "pending", age: parseInt(form.age) || 0 };
-    setBookings(prev => [newB, ...prev]);
-    setForm(EMPTY_BOOKING);
-    setShowForm(false);
-    showToast("✓ تم إضافة الحجز بنجاح");
+    try {
+      const result = await insertBooking({
+        name:      form.name,
+        phone:     form.phone,
+        email:     form.email     || null,
+        specialty: form.specialty,
+        doctor:    form.doctor    || null,
+        date:      form.date,
+        time:      form.time      || null,
+        notes:     form.notes     || null,
+        status:    "pending",
+      });
+      setBookings(prev => [result[0], ...prev]);
+      setForm(EMPTY_BOOKING);
+      setShowForm(false);
+      showToast("✓ تم إضافة الحجز بنجاح");
+    } catch (e) {
+      showToast("حدث خطأ أثناء الحفظ", "error");
+    }
   };
 
   const filtered = bookings.filter(b => {
@@ -668,19 +712,35 @@ function ReportsPage() {
 
 // ===================== MAIN APP =====================
 export default function App() {
-  const [page, setPage] = useState("overview");
+  const [page, setPage]         = useState("overview");
   const [collapsed, setCollapsed] = useState(false);
-  const [bookings, setBookings] = useState(INITIAL_BOOKINGS);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [bookings, setBookings]  = useState([]);
+  const [loadingData, setLoadingData] = useState(false);
+  const [loggedIn, setLoggedIn]  = useState(false);
   const [loginForm, setLoginForm] = useState({ u: "", p: "" });
   const [loginErr, setLoginErr] = useState("");
+
+  const loadBookings = async () => {
+    setLoadingData(true);
+    try {
+      const data = await fetchBookings();
+      setBookings(data || []);
+    } catch (e) {
+      console.error("Supabase fetch error:", e);
+    } finally {
+      setLoadingData(false);
+    }
+  };
+
+  useEffect(() => {
+    if (loggedIn) loadBookings();
+  }, [loggedIn]);
 
   const doLogin = (e) => {
     e.preventDefault();
     if (loginForm.u === "admin" && loginForm.p === "test123") setLoggedIn(true);
     else setLoginErr("بيانات الدخول غير صحيحة");
   };
-
   if (!loggedIn) return (
     <div style={{ minHeight: "100vh", background: "#050d1a", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Tajawal',sans-serif", direction: "rtl" }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap'); * { box-sizing: border-box; }`}</style>
@@ -728,9 +788,12 @@ export default function App() {
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <div style={{ background: "rgba(34,197,94,.1)", border: "1px solid rgba(34,197,94,.2)", color: "#22c55e", padding: "5px 12px", borderRadius: 20, fontSize: 12, fontWeight: 600, display: "flex", alignItems: "center", gap: 6 }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e", display: "inline-block", animation: "pulse 2s infinite" }} />
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#22c55e", display: "inline-block" }} />
               نظام نشط
             </div>
+            <button onClick={loadBookings} disabled={loadingData} style={{ background: "rgba(59,158,190,.1)", border: "1px solid rgba(59,158,190,.2)", color: "#3B9EBE", padding: "7px 14px", borderRadius: 9, fontFamily: "inherit", fontSize: 13, cursor: "pointer", display: "flex", alignItems: "center", gap: 6 }}>
+              {loadingData ? "⏳" : "🔄"} تحديث
+            </button>
             <div style={{ width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(135deg,#3B9EBE,#0D6B8C)", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700 }}>A</div>
             <button onClick={() => setLoggedIn(false)} style={{ background: "rgba(239,68,68,.08)", border: "1px solid rgba(239,68,68,.2)", color: "#ef4444", padding: "7px 14px", borderRadius: 9, fontFamily: "inherit", fontSize: 13, cursor: "pointer" }}>خروج</button>
           </div>
