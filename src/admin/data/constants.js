@@ -11,10 +11,10 @@ export const PATIENTS = [
   { id: 1, name: "أحمد محمد علي", age: 34, phone: "0501234567", email: "ahmed@gmail.com", visits: 5, lastVisit: "2026-03-12", doctor: "د. أحمد محمد", insurance: "بوبا" },
   { id: 2, name: "سارة عبدالله", age: 28, phone: "0509876543", email: "sara@gmail.com", visits: 3, lastVisit: "2026-03-12", doctor: "د. سارة المنصور", insurance: "ميدغلف" },
   { id: 3, name: "محمد الغامدي", age: 45, phone: "0551234567", email: "mhmd@gmail.com", visits: 8, lastVisit: "2026-03-11", doctor: "د. خالد حسن", insurance: "الراجحي" },
-  { id: 4, name: "فاطمة الزهراني", age: 32, phone: "0561234567", email: "fatma@gmail.com", visits: 2, lastVisit: "2026-03-10", doctor: "د. عمر احمد", insurance: "لا يوجد" },
+  { id: 4, name: "فاطمة حسين", age: 32, phone: "0561234567", email: "fatma@gmail.com", visits: 2, lastVisit: "2026-03-10", doctor: "د. عمر احمد", insurance: "لا يوجد" },
   { id: 5, name: "نورة احمد", age: 24, phone: "0581234567", email: "nora@gmail.com", visits: 1, lastVisit: "2026-03-09", doctor: "د. منى عادل", insurance: "AXA" },
   { id: 6, name: "عبدالرحمن الحربي", age: 61, phone: "0591234567", email: "abdo@gmail.com", visits: 12, lastVisit: "2026-03-08", doctor: "د. أحمد محمد", insurance: "بوبا" },
-  { id: 7, name: "منيرة القحطاني", age: 38, phone: "0521234567", email: "mona@gmail.com", visits: 4, lastVisit: "2026-03-07", doctor: "د. سارة المنصور", insurance: "سلامة" },
+  { id: 7, name: "خلود حسن", age: 38, phone: "0521234567", email: "mona@gmail.com", visits: 4, lastVisit: "2026-03-07", doctor: "د. سارة المنصور", insurance: "سلامة" },
 ];
 
 export const MONTHLY_DATA = [
