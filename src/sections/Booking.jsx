@@ -52,7 +52,6 @@ export default function Booking() {
       `\nشكراً لكم ✨`
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank')
   }
-
   // ===== حجز مباشر → Supabase =====
   const submitDirect = async (e) => {
     e.preventDefault()
@@ -62,7 +61,6 @@ export default function Booking() {
       setError('يرجى ملء الحقول المطلوبة: الاسم، الهاتف، التخصص، التاريخ')
       return
     }
-
     setLoading(true)
     try {
       await saveBookingToSupabase({

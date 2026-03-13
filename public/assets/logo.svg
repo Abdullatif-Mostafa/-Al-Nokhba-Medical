@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260" width="200" height="260">
+
+  <!-- Staff line -->
+  <line x1="100" y1="40" x2="100" y2="175" stroke="#3B9EBE" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Wings left -->
+  <path d="M100 54 Q78 44 65 50 Q72 58 85 60 Q72 62 62 72 Q75 74 88 68" fill="#3B9EBE"/>
+  <!-- Wings right -->
+  <path d="M100 54 Q122 44 135 50 Q128 58 115 60 Q128 62 138 72 Q125 74 112 68" fill="#3B9EBE"/>
+
+  <!-- Snake left -->
+  <path d="M94 66 Q82 81 94 96 Q106 111 94 126 Q82 141 94 156 Q98 161 100 163" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Snake right -->
+  <path d="M106 66 Q118 81 106 96 Q94 111 106 126 Q118 141 106 156 Q102 161 100 163" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Snake heads -->
+  <ellipse cx="92" cy="164" rx="5" ry="3.5" fill="#22c55e" transform="rotate(-20 92 164)"/>
+  <ellipse cx="108" cy="164" rx="5" ry="3.5" fill="#22c55e" transform="rotate(20 108 164)"/>
+
+  <!-- Top orb -->
+  <circle cx="100" cy="38" r="12" fill="#060e1c" stroke="#3B9EBE" stroke-width="2"/>
+  <circle cx="100" cy="38" r="6"  fill="#3B9EBE" opacity="0.5"/>
+  <circle cx="100" cy="38" r="3"  fill="#3B9EBE"/>
+
+  <!-- Base -->
+  <rect x="93" y="173" width="14" height="6" rx="3" fill="#3B9EBE" opacity="0.7"/>
+  <rect x="89" y="178" width="22" height="4" rx="2" fill="#3B9EBE" opacity="0.4"/>
+
+  <!-- Divider -->
+  <line x1="30" y1="198" x2="170" y2="198" stroke="#1e3a5f" stroke-width="0.8"/>
+
+  <!-- Clinic name Arabic -->
+  <text x="100" y="220" text-anchor="middle" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#3B9EBE">عيادة النخبة</text>
+
+  <!-- Clinic name English -->
+  <text x="100" y="236" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#6b9ab8" letter-spacing="1.5">AL-NUKHBA MEDICAL CLINIC</text>
+
+  <!-- Tagline -->
+  <text x="100" y="252" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#4a7a9b">صحتك أولويتنا</text>
+
+</svg>
