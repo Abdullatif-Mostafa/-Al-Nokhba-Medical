@@ -13,7 +13,7 @@ export default function Doctors() {
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16 }}>
         {DOCTORS.map(d => {
-          const av  = avatar(d.name);
+          const av = avatar(d.name);
           const sel = selected?.id === d.id;
           return (
             <div key={d.id} onClick={() => setSelected(sel ? null : d)}
@@ -55,7 +55,7 @@ export default function Doctors() {
             <button onClick={() => setSelected(null)} style={{ background: "none", border: "none", color: "rgba(255,255,255,.4)", fontSize: 18, cursor: "pointer" }}>✕</button>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 12 }}>
-            {[["التخصص", selected.specialty],["سعر الكشف", selected.fee + " ريال"],["سنوات الخبرة", selected.exp],["عدد المرضى", selected.patients]].map(([l,v]) => (
+            {[["التخصص", selected.specialty], ["سعر الكشف", selected.fee + " جنيه "], ["سنوات الخبرة", selected.exp], ["عدد المرضى", selected.patients]].map(([l, v]) => (
               <div key={l} style={{ background: "rgba(255,255,255,.04)", borderRadius: 12, padding: "14px 16px" }}>
                 <div style={{ fontSize: 12, color: "rgba(255,255,255,.4)", marginBottom: 4 }}>{l}</div>
                 <div style={{ fontWeight: 700, fontSize: 16 }}>{v}</div>
