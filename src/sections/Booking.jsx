@@ -27,9 +27,9 @@ export default function Booking() {
   const [form, setForm] = useState({
     name: '', phone: '', email: '', service: '', date: '', doctor: '', notes: ''
   })
-  const [loading, setLoading]   = useState(false)
-  const [success, setSuccess]   = useState(false)
-  const [error, setError]       = useState('')
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState('')
 
   const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target.value }))
 
@@ -48,7 +48,7 @@ export default function Booking() {
       `🩺 التخصص: ${service}\n` +
       `📅 التاريخ: ${date}\n` +
       (doctor ? `👨‍⚕️ الطبيب المفضل: ${doctor}\n` : '') +
-      (notes  ? `📝 ملاحظات: ${notes}\n`            : '') +
+      (notes ? `📝 ملاحظات: ${notes}\n` : '') +
       `\nشكراً لكم ✨`
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank')
   }
@@ -64,15 +64,15 @@ export default function Booking() {
     setLoading(true)
     try {
       await saveBookingToSupabase({
-        name:      form.name,
-        phone:     form.phone,
-        email:     form.email     || null,
+        name: form.name,
+        phone: form.phone,
+        email: form.email || null,
         specialty: form.service,
-        doctor:    form.doctor    || null,
-        date:      form.date,
-        time:      null,
-        notes:     form.notes     || null,
-        status:    'pending',
+        doctor: form.doctor || null,
+        date: form.date,
+        time: null,
+        notes: form.notes || null,
+        status: 'pending',
       })
       setSuccess(true)
       setForm({ name: '', phone: '', email: '', service: '', date: '', doctor: '', notes: '' })
@@ -100,10 +100,10 @@ export default function Booking() {
             </p>
 
             {[
-              { icon: 'fas fa-clock',        title: 'مواعيد مرنة',               sub: 'من السبت إلى الخميس | 8 صباحاً – 10 مساءً' },
-              { icon: 'fas fa-check-circle', title: 'تأكيد سريع',               sub: 'سيتواصل معك فريقنا خلال دقائق' },
-              { icon: 'fas fa-undo',         title: 'إلغاء مجاني',              sub: 'يمكنك إلغاء موعدك مجاناً قبل 24 ساعة' },
-              { icon: 'fas fa-shield-alt',   title: 'بياناتك آمنة ومحمية',     sub: 'نلتزم بأعلى معايير حماية الخصوصية' },
+              { icon: 'fas fa-clock', title: 'مواعيد مرنة', sub: 'من السبت إلى الخميس | 8 صباحاً – 10 مساءً' },
+              { icon: 'fas fa-check-circle', title: 'تأكيد سريع', sub: 'سيتواصل معك فريقنا خلال دقائق' },
+              { icon: 'fas fa-undo', title: 'إلغاء مجاني', sub: 'يمكنك إلغاء موعدك مجاناً قبل 24 ساعة' },
+              { icon: 'fas fa-shield-alt', title: 'بياناتك آمنة ومحمية', sub: 'نلتزم بأعلى معايير حماية الخصوصية' },
             ].map(f => (
               <div key={f.title} className={styles.feature}>
                 <div className={styles.featureIcon}><i className={f.icon} /></div>
@@ -147,7 +147,7 @@ export default function Booking() {
                   </div>
                   <div className={styles.group}>
                     <label className={styles.label}>رقم الهاتف *</label>
-                    <input className={styles.input} placeholder="05xxxxxxxx" type="tel" value={form.phone} onChange={set('phone')} required />
+                    <input className={styles.input} placeholder="01xxxxxxxxxxxx" type="tel" value={form.phone} onChange={set('phone')} required />
                   </div>
                 </div>
 
