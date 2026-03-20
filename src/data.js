@@ -70,7 +70,7 @@ export const DOCTORS = [
   },
   {
     id: 2,
-    name: 'د. سارة المحمدي',
+    name: 'د. سارة محمد',
     specialty: 'استشارية طب الأطفال والحديثي الولادة',
     university: 'جامعة أكسفورد',
     experience: '14 سنة',
