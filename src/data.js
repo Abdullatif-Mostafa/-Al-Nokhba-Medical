@@ -2,7 +2,7 @@ export const WHATSAPP_NUMBER = '01xxxxxxxxx'
 export const PHONE_PRIMARY = '01xxxxxxxxx'
 export const PHONE_EMERGENCY = '01xxxxxxxxx'
 export const EMAIL = 'info@nakhba-clinic.com'
-export const ADDRESS = 'شارع الملك فهد، الرياض 12345'
+export const ADDRESS = 'ش محمد علي وسط البلد , القاهرة'
 export const WORKING_HOURS = 'السبت – الخميس | 8 ص – 10 م'
 
 export const SERVICES = [
