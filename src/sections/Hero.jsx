@@ -57,7 +57,7 @@ export default function Hero() {
             <a href="#booking" className="btn-primary">
               <i className="fas fa-calendar-check" /> احجز موعدك الآن
             </a>
-            <a href="tel:01xxxxxxxxx6500000000" className="btn-secondary">
+            <a href="tel:01xxxxxxxxx" className="btn-secondary">
               <i className="fas fa-phone" /> اتصل بنا
             </a>
           </div>
